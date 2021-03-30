@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const routes = require('./routes');
 
+
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 
@@ -14,7 +15,10 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
-app.use(routes);
+
+
+
+
 
 if (!isProduction) {
   app.use(cors());
@@ -34,5 +38,14 @@ app.use(
     },
   })
 );
+
+app.use(routes);
+
+// app.get('/hello/world', (req, res) => {
+//     res.render('index', {
+//     csrfToken: req.csrfToken()}
+//     )
+// }
+// )
 
 module.exports = app;
