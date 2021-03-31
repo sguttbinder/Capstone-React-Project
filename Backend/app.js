@@ -8,7 +8,7 @@ const routes = require('./routes');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 const app = express();
-const { ValidationError } = require('sequelize');
+const { ValidationError } = require('sequelize/types');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
